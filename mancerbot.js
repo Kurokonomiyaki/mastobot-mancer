@@ -68,7 +68,8 @@ const splitText = (text) => {
 const runCommand = (instance, command, from, to) => {
   console.log('Running', command, from, to);
 
-  const funcs = WHAT_TO_SAY[REPLACEMENTS[command]];
+  const key = REPLACEMENTS[command] || command;
+  const funcs = WHAT_TO_SAY[key];
   if (funcs == null || from == null || to == null) {
     return;
   }

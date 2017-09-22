@@ -2,27 +2,27 @@ export const INSTANCE_URL = 'https://localhost:4000/api/v1';
 export const ACCESS_TOKEN = '424fc742702b27cfbb4d9b04e9cd6d7ec41cbfea90a92e90a4b81938901b1d5c';
 
 export const REPLACEMENTS = {
-  'coffee': 'coffee',
   'cafe': 'coffee',
   'caffe': 'coffee',
   'coffe': 'coffee',
   'kawa': 'coffee',
 
-  'tea': 'tea',
   'thé': 'tea',
   'the': 'tea',
 
-  'birthday': 'birthday',
   'annif': 'birthday',
   'anif': 'birthday',
   'anniv': 'birthday',
   'aniv': 'birthday',
   'anniversaire': 'birthday',
   
+  'mochi': 'dango',
+
+  'glace': 'icecream',
+  'sorbet': 'icecream',  
   /*'gateau': 'cake',
   'biscuit': 'cookie',
-  'glace': 'icecream',
-
+  
   'hamburger': 'burger',
   'cheeseburger': 'burger',*/
 };
@@ -49,7 +49,7 @@ export const WHAT_TO_SAY = {
     (from, to) => makeMancer(`${to} Black, green, with sugar or with milk? I can cast all the tea you want!`, '🍵'),
     (from, to) => makeMancer(`${to} Hey, ${from} thinks you deserve a nice cup of tea! Agreed!`, '🍵'),
     (from, to) => makeMancer(`${to} Be prepared! ${from} invoked the teamancer for you!`, '🍵'),
-    (from, to) => makeMancer(`${to} Green like magic!`, '☕'),            
+    (from, to) => makeMancer(`${to} Green like magic!`, '🍵'),            
   ],
 
   birthday: [
@@ -80,17 +80,37 @@ export const WHAT_TO_SAY = {
     (from, to) => makeMancer(`${to} Pizza!`, '🍕'),
     (from, to) => makeMancer(`${to} Be prepared! ${from} invoked the pizzamancer for you!`, '🍕'),
   ],
+
+  dango: [
+    (from, to) => makeMancer(`${to} Here, have some dangos from ${from}!`, '🍡'),
+    (from, to) => makeMancer(`${to} Hey, ${from} thinks you deserve something sweet and squishy!`, '🍡'),   
+    (from, to) => makeMancer(`${to} Sweet, flavored and soft!`, '🍡'),
+    (from, to) => makeMancer(`${to} Rice, red bean, green tea. It\'s dango time!`, '🍡'),
+    (from, to) => makeMancer(`${to} Some dangos and a warm cup of green tea, yum!`, '🍡🍵'),
+    (from, to) => makeMancer(`${to} Be prepared! ${from} invoked the dangomancer for you!`, '🍡'),
+  ],
+
+  icecream: [
+    (from, to) => makeMancer(`${to} Here, have a sweet ice cream from ${from}!`, ICE_CREAMS),
+    (from, to) => makeMancer(`${to} Hey, ${from} would like to offer you this ice cream`, ICE_CREAMS),   
+    (from, to) => makeMancer(`${to} Yum! Ice cream!`, ICE_CREAMS),
+    (from, to) => makeMancer(`${to} Vanilla, strawberry, chocolate, pistachio? I can cast any ice cream for you!`, ICE_CREAMS),
+    (from, to) => makeMancer(`${to} It\'s hot in here, would you like some ice cream?`, ICE_CREAMS),
+    (from, to) => makeMancer(`${to} Be prepared! ${from} invoked the icecreamancer for you!`, ICE_CREAMS),
+  ],
 };
 
 
-const CAKES = ['🎂', '🍰', '🎁', '🍾', '🎂🍾', '🍰🍾', '🎶🎂🎶', '🎶🍰🎶', '🎶🎁🎶', '🎶🍾🎶'];
+const CAKES = ['🎂', '🍰', '🎁', '🍾', '🎂🍾', '🍰🍾', '🎂🥂', '🍰🥂', '🎶🎂🎶', '🎶🍰🎶', '🎶🎁🎶', '🎶🍾🎶'];
 const DRINKS = ['🍷', '🍸', '🍹', '🍺'];
+const ICE_CREAMS = ['🍨', '🍧', '🍦'];
 
 const SPARKLES = [
   '☆ﾟ.*',
   '☆ﾟ๑*',
   '*:･ﾟ✧',
-  '*･ﾟ๑',
+  '✧°๑･⁺｡',
+  '*･ﾟ๑°',
   '☆ﾟ*･｡ﾟ',
   '*ﾟ✲*☆',
   '✩⁺˚✲°',
@@ -115,6 +135,11 @@ const FACES = [
   '⚆ ω ⚆',
   '◔ ω ◔',
   '• ω •',
+  'ᵔ ʖ ᵔ',
+  'ﾟ ʖ ﾟ',
+  '⚆ ʖ ⚆',
+  '◔ ʖ ◔',
+  '• ʖ •',
 ];
 const makeMancer = (before, item, faces = FACES) => {
   if (Array.isArray(item)) {

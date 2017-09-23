@@ -1,5 +1,8 @@
-export const INSTANCE_URL = 'https://localhost:4000/api/v1';
-export const ACCESS_TOKEN = '424fc742702b27cfbb4d9b04e9cd6d7ec41cbfea90a92e90a4b81938901b1d5c';
+export const INSTANCE_URL = 'https://localhost:3000/api/v1';
+export const ACCESS_TOKEN = '<your token here>';
+export const TOOT_OPTIONS = {
+  visibility: 'public',
+};
 
 export const REPLACEMENTS = {
   'cafe': 'coffee',
@@ -7,7 +10,6 @@ export const REPLACEMENTS = {
   'coffe': 'coffee',
   'kawa': 'coffee',
 
-  'thé': 'tea',
   'the': 'tea',
 
   'annif': 'birthday',
@@ -20,54 +22,49 @@ export const REPLACEMENTS = {
 
   'glace': 'icecream',
   'sorbet': 'icecream',  
-  /*'gateau': 'cake',
-  'biscuit': 'cookie',
-  
-  'hamburger': 'burger',
-  'cheeseburger': 'burger',*/
 };
 
 export const WHAT_TO_SAY = {
   coffee: [
-    (from, to) => makeHallumancer(`${to} Here is some coffee!`, '☕'),
+    (from, to) => makeHallumancer(`${to} Here is some coffee! (offered by ${from})`, '☕'),
     (from, to) => makeHallumancer(`${to} Have some coffee from ${from}!`, '☕'),
-    (from, to) => makeHallumancer(`${to} What about a delicious coffee?`, '☕'),
+    (from, to) => makeHallumancer(`${to} What about a delicious coffee, offered by ${from}?`, '☕'),
     (from, to) => makeHallumancer(`${to} Hello, ${from} wants to offer you a coffee!`, '☕'),
     (from, to) => makeHallumancer(`${to} Enjoy a warm and delicious coffee! Offered by ${from}.`, '☕'),
-    (from, to) => makeHallumancer(`${to} Black, with sugar or with milk? I can cast all the coffee you want!`, '☕'),
+    (from, to) => makeHallumancer(`${to} Black, with sugar or with milk? Under the command of ${from}, I can cast all the coffee you want!`, '☕'),
     (from, to) => makeHallumancer(`${to} Hey, ${from} thinks you deserve a coffee! Agreed!`, '☕'),
     (from, to) => makeHallumancer(`${to} Be prepared! ${from} invoked the coffeemancer for you!`, '☕'),
-    (from, to) => makeHallumancer(`${to} Black like magic!`, '☕'),
+    (from, to) => makeHallumancer(`${to} Black like magic! (and offered by ${from})`, '☕'),
   ],
 
   tea: [
-    (from, to) => makeMancer(`${to} Here is some tea!`, '🍵'),
+    (from, to) => makeMancer(`${to} Here is some tea! (offered by ${from})`, '🍵'),
     (from, to) => makeMancer(`${to} Have some tea from ${from}!`, '🍵'),
-    (from, to) => makeMancer(`${to} What about a delicious and flavored tea?`, '🍵'),
+    (from, to) => makeMancer(`${to} What about a delicious and flavored tea, offered by ${from}?`, '🍵'),
     (from, to) => makeMancer(`${to} Hello, ${from} wants to offer you this cup of tea!`, '🍵'),
     (from, to) => makeMancer(`${to} Enjoy What about a warm and flavored tea! Offered by ${from}.`, '🍵'),
-    (from, to) => makeMancer(`${to} Black, green, with sugar or with milk? I can cast all the tea you want!`, '🍵'),
+    (from, to) => makeMancer(`${to} Black, green, with sugar or with milk? Under the command of ${from}, I can cast all the tea you want!`, '🍵'),
     (from, to) => makeMancer(`${to} Hey, ${from} thinks you deserve a nice cup of tea! Agreed!`, '🍵'),
     (from, to) => makeMancer(`${to} Be prepared! ${from} invoked the teamancer for you!`, '🍵'),
-    (from, to) => makeMancer(`${to} Green like magic!`, '🍵'),            
+    (from, to) => makeMancer(`${to} Green like magic!  (and offered by ${from})`, '🍵'),            
   ],
 
   birthday: [
-    (from, to) => makeMancer(`${to} Is it your birthday? Neat!`, CAKES),
-    (from, to) => makeMancer(`${to} A happy birthday from ${from}!`, CAKES),
-    (from, to) => makeMancer(`${to} How nice, ${from} remembered it\'s your birthday today!`, CAKES),   
-    (from, to) => makeMancer(`${to} Happy birthday! Let me cast something for you.`, CAKES),
-    (from, to) => makeMancer(`${to} Hello, ${from} wishes you a happy birthday.`, CAKES),
-    (from, to) => makeMancer(`${to} Hey, ${from} reminded me of your birthday!`, CAKES),
+    (from, to) => makeMancer(`${to} Is it your birthday? Neat!`, BIRTHDAY),
+    (from, to) => makeMancer(`${to} A happy birthday from ${from}!`, BIRTHDAY),
+    (from, to) => makeMancer(`${to} How nice, ${from} remembered it\'s your birthday today!`, BIRTHDAY),   
+    (from, to) => makeMancer(`${to} Hi, ${from} wants to wish you a happy birthday! Let me cast something for you.`, BIRTHDAY),
+    (from, to) => makeMancer(`${to} Hello, ${from} wishes you a happy birthday.`, BIRTHDAY),
+    (from, to) => makeMancer(`${to} Hey, ${from} reminded me of your birthday!`, BIRTHDAY),
   ],
 
   cookie: [
-    (from, to) => makeMancer(`${to} Would you like a cookie?`, '🍪'),
+    (from, to) => makeMancer(`${to} Would you like a cookie? It'\s a gift from ${from}.`, '🍪'),
     (from, to) => makeMancer(`${to} Here, have a cookie from ${from}!`, '🍪'),
     (from, to) => makeMancer(`${to} Hey, ${from} thinks you deserve a cookie!`, '🍪'),   
-    (from, to) => makeMancer(`${to} Yum, there is chocolate in it!`, '🍪'),
+    (from, to) => makeMancer(`${to} Yum, there is chocolate in it and ${from} thinks you may enjoy some!`, '🍪'),
     (from, to) => makeMancer(`${to} A fresh baked cookie, offered by ${from}.`, '🍪'),
-    (from, to) => makeMancer(`${to} Cookie!`, '🍪'),
+    (from, to) => makeMancer(`${to} Cookie! (offered by ${from})`, '🍪'),
     (from, to) => makeMancer(`${to} Be prepared! ${from} invoked the cookiemancer for you!`, '🍪'),
   ],
 
@@ -76,32 +73,32 @@ export const WHAT_TO_SAY = {
     (from, to) => makeMancer(`${to} A nice pizza, offered by ${from}!`, '🍕'),
     (from, to) => makeMancer(`${to} Hey, ${from} thinks you deserve this pizza!`, '🍕'),   
     (from, to) => makeMancer(`${to} Yum, ${from} wants you to have this delicous pizza.`, '🍕'),
-    (from, to) => makeMancer(`${to} Regina, veggie, margherita? I can cast any pizza for you! Even with pineapples!`, '🍕'),
-    (from, to) => makeMancer(`${to} Pizza!`, '🍕'),
+    (from, to) => makeMancer(`${to} Regina, veggie, margherita? Under the command of ${from}, I can cast any pizza for you! Even with pineapples!`, '🍕'),
+    (from, to) => makeMancer(`${to} Pizza! (offered by ${from})`, '🍕'),
     (from, to) => makeMancer(`${to} Be prepared! ${from} invoked the pizzamancer for you!`, '🍕'),
   ],
 
   dango: [
     (from, to) => makeMancer(`${to} Here, have some dangos from ${from}!`, '🍡'),
     (from, to) => makeMancer(`${to} Hey, ${from} thinks you deserve something sweet and squishy!`, '🍡'),   
-    (from, to) => makeMancer(`${to} Sweet, flavored and soft!`, '🍡'),
-    (from, to) => makeMancer(`${to} Rice, red bean, green tea. It\'s dango time!`, '🍡'),
-    (from, to) => makeMancer(`${to} Some dangos and a warm cup of green tea, yum!`, '🍡🍵'),
+    (from, to) => makeMancer(`${to} Sweet, flavored and soft! (offered by ${from})`, '🍡'),
+    (from, to) => makeMancer(`${to} Rice, red bean, green tea. It\'s dango time! (offered by ${from})`, '🍡'),
+    (from, to) => makeMancer(`${to} Some dangos and a warm cup of green tea, yum! (offered by ${from})`, '🍡🍵'),
     (from, to) => makeMancer(`${to} Be prepared! ${from} invoked the dangomancer for you!`, '🍡'),
   ],
 
   icecream: [
     (from, to) => makeMancer(`${to} Here, have a sweet ice cream from ${from}!`, ICE_CREAMS),
     (from, to) => makeMancer(`${to} Hey, ${from} would like to offer you this ice cream`, ICE_CREAMS),   
-    (from, to) => makeMancer(`${to} Yum! Ice cream!`, ICE_CREAMS),
-    (from, to) => makeMancer(`${to} Vanilla, strawberry, chocolate, pistachio? I can cast any ice cream for you!`, ICE_CREAMS),
-    (from, to) => makeMancer(`${to} It\'s hot in here, would you like some ice cream?`, ICE_CREAMS),
+    (from, to) => makeMancer(`${to} Yum! Ice cream! (offered by ${from})`, ICE_CREAMS),
+    (from, to) => makeMancer(`${to} Vanilla, strawberry, chocolate, pistachio? Under the command of ${from}, I can cast any ice cream for you!`, ICE_CREAMS),
+    (from, to) => makeMancer(`${to} It\'s hot in here, would you like some ice cream? ${from} thinks you would.`, ICE_CREAMS),
     (from, to) => makeMancer(`${to} Be prepared! ${from} invoked the icecreamancer for you!`, ICE_CREAMS),
   ],
 };
 
-
-const CAKES = ['🎂', '🍰', '🎁', '🍾', '🎂🍾', '🍰🍾', '🎂🥂', '🍰🥂', '🎶🎂🎶', '🎶🍰🎶', '🎶🎁🎶', '🎶🍾🎶'];
+const CAKES = ['🎂', '🍰'];
+const BIRTHDAY = [...CAKES, '🎁', '🍾', '🎂🍾', '🍰🍾', '🎂🥂', '🍰🥂', '🎶🎂🎶', '🎶🍰🎶', '🎶🎁🎶', '🎶🍾🎶'];
 const DRINKS = ['🍷', '🍸', '🍹', '🍺'];
 const ICE_CREAMS = ['🍨', '🍧', '🍦'];
 

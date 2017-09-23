@@ -1,11 +1,13 @@
 import {
-  IMAGE_FOLDER,
   INSTANCE_URL,
   ACCESS_TOKEN,
+  TOOT_OPTIONS,
   WHAT_TO_SAY,
   REPLACEMENTS,
 } from './settings';
 
+import Url from 'url';
+import Path from 'path';
 import Mastodon from 'mastodon-api';
 import HtmlParser from 'htmlparser';
 import Str from 'underscore.string';
@@ -18,8 +20,8 @@ export const startBot = () => {
 
   const listener = instance.stream('streaming/user');
   listener.on('message', (msg) => onMessageReceived(instance, msg));
-  listener.on('error', err => console.log(err));
-  listener.on('heartbeat', msg => console.log('Dadoum.'));
+  listener.on('error', (err) => console.log(err));
+  // listener.on('heartbeat', msg => console.log('Dadoum.'));
 
   console.log('Listening...');
 };
@@ -39,19 +41,15 @@ const onMessageReceived = (instance, message) => {
       }
 
       const text = [];
-      if (dom.length > 0 && dom[0].children != null) {
-        dom.forEach((p) => {
-          p.children.forEach((child) => {
-            if (child.type === 'text') {
-              text.push(child.data);
-            }
-          });
+      if (dom.length > 0) {
+        dom.forEach((child) => {
+          domNodeToText(child, text);
         });
       }
 
       if (text.length > 0) {
-        const words = splitText(text.join(' '));
-        runCommand(instance, words[0], author.acct, words[1]);
+        const words = Str.words(Str.cleanDiacritics(text.join(' ')).toLowerCase());
+        runCommand(instance, words[1], author.acct, words[2]);
       }
       // console.log(JSON.stringify(dom, null, 2));
     });
@@ -60,10 +58,44 @@ const onMessageReceived = (instance, message) => {
   }
 };
 
-const splitText = (text) => {
-  text = Str.cleanDiacritics(text);
-  return Str.words(text.toLowerCase());
-};
+const domNodeToText = (node, text = []) => {
+  const { name, type, attribs = {}, children } = node;
+  const { class: className } = attribs;
+
+  // regular text
+  if (type === 'text') {
+    text.push(node.data);
+    return;
+  }
+
+  // ignore invisible content (cw)
+  if (className != null && className.includes('invisible')) {
+    return;
+  }
+
+  // extract mentionned users
+  if (name === 'a' && className != null && className.includes('mention')) {
+    const { href } = attribs;
+    if (href != null) {      
+      const url = Url.parse(href);
+      const { hostname, pathname } = url;
+
+      if (pathname != null && hostname != null) {
+        let userName = Path.posix.basename(pathname);
+        if (userName != null) {
+          text.push(`${userName}@${hostname}`);
+        }
+      }
+      return;
+    }
+  }
+
+  if (children != null && children.length > 0) {
+    children.forEach((child) => {
+      domNodeToText(child, text);
+    });
+  }
+}
 
 const runCommand = (instance, command, from, to) => {
   console.log('Running', command, from, to);
@@ -74,13 +106,19 @@ const runCommand = (instance, command, from, to) => {
     return;
   }
 
-  const func = randomPick(funcs);
-  const text = func(`@${from}`, `@${to}`);
+  if (from.startsWith('@') === false) {
+    from = `@${from}`;
+  }
+  if (to.startsWith('@') === false) {
+    to = `@${to}`;
+  }
 
-  instance.post('statuses', {
+  const func = randomPick(funcs);
+  const text = func(from, to);
+
+  instance.post('statuses', Object.assign({
     status: text,
-    visibility: 'unlisted',
-  });
+  }, TOOT_OPTIONS));
 };
 
 const randomPick = (arr) => {

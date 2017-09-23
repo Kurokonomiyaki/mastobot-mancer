@@ -79,7 +79,7 @@ const runCommand = (instance, command, from, to) => {
 
   instance.post('statuses', {
     status: text,
-    visibility: 'direct',
+    visibility: 'unlisted',
   });
 };
 

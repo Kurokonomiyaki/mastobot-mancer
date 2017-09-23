@@ -8,3 +8,6 @@ User=<specify user here>
 ExecStart=/usr/bin/node <path to your mancerbot>
 TimeoutSec=15
 Restart=always
+
+[Install]
+WantedBy=multi-user.target

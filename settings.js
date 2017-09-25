@@ -1,4 +1,4 @@
-export const INSTANCE_URL = 'https://localhost:4000/api/v1';
+export const INSTANCE_URL = 'https://localhost:3000/api/v1';
 export const ACCESS_TOKEN = '<your token here>';
 export const TOOT_OPTIONS = {
   visibility: 'public',
@@ -35,6 +35,11 @@ export const REPLACEMENTS = {
   'rabbit': 'bunny',
   'lapin': 'bunny',
   'lapinou': 'bunny',
+
+  'flowers': 'flower',
+  'fleur': 'flower',
+  'fleurs': 'flower',
+  'bouquet': 'flower',
 };
 
 export const WHAT_TO_SAY = {
@@ -136,6 +141,16 @@ export const WHAT_TO_SAY = {
     (from, to) => makeMancer(`${to} Oh! ${from} sends you cute bunnies!`, BUNNIES),
     (from, to) => makeMancer(`${to} Be prepared! ${from} invoked the bunnymancer for you!`, BUNNIES),
   ],
+
+  flower: [
+    (from, to) => makeMancer(`${to} Hey, ${from} asked me to send you some flowers!`, FLOWERS),
+    (from, to) => makeMancer(`${to} Hello, ${from} would like to offer you some nice flowers.`, FLOWERS),
+    (from, to) => makeMancer(`${to} Have some flowers from ${from}!`, FLOWERS),
+    (from, to) => makeMancer(`${to} It looks like ${from} wants to offer you some flowers!`, FLOWERS),
+    (from, to) => makeMancer(`${to} Some little flowers for you, from ${from}.`, FLOWERS),
+    (from, to) => makeMancer(`${to} Oh! ${from} thinks you deserve some flowers.`, FLOWERS),
+    (from, to) => makeMancer(`${to} Be prepared! ${from} invoked the flowermancer for you!`, FLOWERS),
+  ],
 };
 
 const BILOVE = '❤💜💙';
@@ -149,6 +164,7 @@ const CAKES = ['🎂', '🍰'];
 const BIRTHDAY = [...CAKES, '🎁', '🍾', '🎂🍾', '🍰🍾', '🎂🥂', '🍰🥂', '🎶🎂🎶', '🎶🍰🎶', '🎶🎁🎶', '🎶🍾🎶'];
 const DRINKS = ['🍷', '🍸', '🍹', '🍺'];
 const ICE_CREAMS = ['🍨', '🍧', '🍦'];
+const FLOWERS = ['🦂', '💐', '🌸', '🏵', '🌹', '🥀', '🌺', '🌻', '🌼', '🌷'];
 
 const SPARKLES = [
   '☆ﾟ.*',
@@ -162,6 +178,35 @@ const SPARKLES = [
   '✧ﾟ.*・',
   '✲ﾟ๑*.°',
 ];
+
+
+const HALLUMANCER_FACES = [
+  '◉ ᗜ ◉',
+  '☼ ᗜ ☼',
+  '⚆ ᗜ ⚆',
+  '◔ ᗜ ◔',
+  '• ᗜ •',
+  '° ᗜ °',
+  '* ᗜ *',
+  '@ ᗜ @',
+  '◉ ◡ ◉',
+  '☼ ◡ ☼',
+];
+const makeHallumancer = (before, item, faces = HALLUMANCER_FACES) => {
+  return makeMancer(before, item, faces);
+}
+
+
+const LOVEMANCER_MOUTHES = ['ᗜ', '◡', 'ᴥ', 'ω', 'v', 'з', '◇'];
+const LOVEMANCER_EYES = ['❤', '💙', '💚', '💛', '💜'];
+
+const makeLovemancer = (before, item) => {
+  const eye = randomPick(LOVEMANCER_EYES);
+  const mouth = randomPick(LOVEMANCER_MOUTHES);
+  const face = `${eye} ${mouth} ${eye}`;
+  return makeMancer(before, item, face);
+}
+
 
 const FACES = [
   ...HALLUMANCER_FACES,
@@ -198,34 +243,6 @@ const makeMancer = (before, item, faces = FACES) => {
   const sparkles = randomPick(SPARKLES);
   
   return `${before}\n(∩ ${face} )⊃━${sparkles}${item}`.trim();
-}
-
-
-const HALLUMANCER_FACES = [
-  '◉ ᗜ ◉',
-  '☼ ᗜ ☼',
-  '⚆ ᗜ ⚆',
-  '◔ ᗜ ◔',
-  '• ᗜ •',
-  '° ᗜ °',
-  '* ᗜ *',
-  '@ ᗜ @',
-  '◉ ◡ ◉',
-  '☼ ◡ ☼',
-];
-const makeHallumancer = (before, item, faces = HALLUMANCER_FACES) => {
-  return makeMancer(before, item, faces);
-}
-
-
-const LOVEMANCER_MOUTHES = ['ᗜ', '◡', 'ᴥ', 'ω', 'v', 'з', '◇'];
-const LOVEMANCER_EYES = ['❤', '💙', '💚', '💛', '💜'];
-
-const makeLovemancer = (before, item) => {
-  const eye = randomPick(LOVEMANCER_EYES);
-  const mouth = randomPick(LOVEMANCER_MOUTHES);
-  const face = `${eye} ${mouth} ${eye}`;
-  return makeMancer(before, item, face);
 }
 
 

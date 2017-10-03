@@ -156,7 +156,8 @@ export const WHAT_TO_SAY = {
 const BILOVE = '❤💜💙';
 const TRANSLOVE = '💙❤🖤❤💙';
 const RAINBOWLOVE = '❤💛💚💜';
-const LOVE = ['❤', '💙', '💚', '💛', '💜', '💕', '💖', '❤♥❤', BILOVE, TRANSLOVE, RAINBOWLOVE];
+const POLYLOVE = '❤❤🖤';
+const LOVE = ['❤', '💙', '💚', '💛', '💜', '💕', '💖', '❤♥❤', BILOVE, TRANSLOVE, RAINBOWLOVE, POLYLOVE];
 
 const BREAKFAST = ['🥞', '🥖', '🥐', '🥐🥖', '🥐🍞', '🥞☕', '🥞🍵', '🥐☕', '🥐🍵'];
 const BUNNIES = ['🐰', '🐇', '🐰🐇', '🐇🐰'];

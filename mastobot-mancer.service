@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 User=<specify user here>
-ExecStart=/usr/bin/node <path to your mancerbot>
+ExecStart=/usr/bin/node <path to your compiled mancerbot>
 TimeoutSec=15
 Restart=always
 

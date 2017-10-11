@@ -78,7 +78,8 @@ const CONGRATS = ['🎺', '🏆', '🏅', '👍', '👏'];
 const BILOVE = '❤💜💙';
 const TRANSLOVE = '💙❤🖤❤💙';
 const RAINBOWLOVE = '❤💛💚💜';
-const LOVE = ['❤', '💙', '💚', '💛', '💜', '💕', '💖', '❤♥❤', BILOVE, TRANSLOVE, RAINBOWLOVE, ...CUSTOM_LOVE_CASTS];
+const POLYLOVE = '❤❤🖤';
+const LOVE = ['❤', '💙', '💚', '💛', '💜', '💕', '💖', '❤♥❤', BILOVE, TRANSLOVE, RAINBOWLOVE, POLYLOVE, ...CUSTOM_LOVE_CASTS];
 
 const LOVEMANCER_MOUTHES = ['ᗜ', '◡', 'ᴥ', 'ω', 'v', 'з', '◇', ...CUSTOM_LOVE_MOUTHES];
 const LOVEMANCER_EYES = ['❤', '💙', '💚', '💛', '💜', ...CUSTOM_LOVE_EYES];
@@ -273,13 +274,13 @@ const COMMANDS = {
   ],
 
   congratulations: [
-    (from, to) => makeMancer(`${to} Hey, ${from} wants to express its congratulations to you!`, CONGRATS),
-    (from, to) => makeMancer(`${to} You know what? ${from} thinks you're the best!`, CONGRATS),
+    (from, to) => makeMancer(`${to} Hey, ${from} wants me to congratulate you! You're the best!`, CONGRATS),
+    (from, to) => makeMancer(`${to} You know what? ${from} thinks you did very well! Congrats!`, CONGRATS),
     (from, to) => makeMancer(`${to} Hello, ${from} believes congratulations are in order here!`, CONGRATS),
     (from, to) => makeMancer(`${to} Oh! ${from} would like to compliment you for your achievements!`, CONGRATS),
-    (from, to) => makeMancer(`${to} How nice! ${from} wants you to know that you did very well!`, CONGRATS),
     (from, to) => makeMancer(`${to} It looks like ${from} was very impressed by what you did!`, CONGRATS),
     (from, to) => makeMancer(`${to} Be prepared! ${from} invoked the congratmancer for praising you!`, CONGRATS),
+    (from, to) => makeMancer(`${to} Wow, ${from} tolds me you did something very impressive! I'm proud of you!`, CONGRATS),
   ],
 };
 
@@ -310,6 +311,9 @@ export const runCommand = (instance, command, fromAddr, toAddr) => {
 
   const func = randomPick(funcs);
   const text = func(from, to);
+  if (text == null) {
+    return;
+  }
 
   instance.post('statuses', Object.assign({
     status: text,

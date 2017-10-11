@@ -14,8 +14,8 @@ const onMessageReceived = (instance, message) => {
     const toot = data.status;
     const author = data.account;
 
-    parseToot(toot.content, (words) => {
-      runCommand(instance, words[1], author.acct, words[2]);
+    parseToot(toot.content, (words, remainingText) => {
+      runCommand(instance, words[1], author.acct, words[2], remainingText);
     });
   }
 };

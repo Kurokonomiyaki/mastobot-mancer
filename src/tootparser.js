@@ -46,21 +46,18 @@ const domNodeToText = (node, text = []) => {
 const analyzeTootDom = (dom) => {
   // console.log('dom', JSON.stringify(dom, null, 2));
 
-  const words = [];
+  const texts = [];
   if (dom.length > 0) {
     dom.forEach((child) => {
-      domNodeToText(child, words);
+      domNodeToText(child, texts);
     });
   }
 
-  if (words.length === 0) {
+  if (texts.length === 0) {
     return null;
   }
 
-  let text = words.join(' ').toLowerCase();
-  text = Str.cleanDiacritics(text);
-  text = text.toLowerCase();
-  return Str.words(text);
+  return texts.join(' ');
 };
 
 export const parseToot = (toot, onResult) => {
@@ -70,8 +67,18 @@ export const parseToot = (toot, onResult) => {
       return;
     }
 
-    const words = analyzeTootDom(dom);
-    onResult(words);
+    const raw = analyzeTootDom(dom);
+    let text = Str.cleanDiacritics(raw);
+    text = text.toLowerCase();
+    const words = Str.words(text);
+
+    const rawWords = Str.words(raw);
+    let rawRemainingText = null;
+    if (rawWords.length > 3) {
+      rawRemainingText = rawWords.slice(3).join(' ');
+    }
+
+    onResult(words, rawRemainingText);
   });
 
   const parser = new HtmlParser.Parser(handler);

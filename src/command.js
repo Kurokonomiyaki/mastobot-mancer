@@ -73,6 +73,7 @@ const DRINKS = ['🍷', '🍸', '🍹', '🍺'];
 const ICE_CREAMS = ['🍨', '🍧', '🍦'];
 const FLOWERS = ['🦂', '💐', '🌸', '🏵', '🌹', '🥀', '🌺', '🌻', '🌼', '🌷'];
 const CONGRATS = ['🎺', '🏆', '🏅', '👍', '👏'];
+const QUESTIONS = ['❓', '❔', '???'];
 
 /** LOVEMANCER */
 const BILOVE = '❤💜💙';
@@ -130,6 +131,10 @@ const COMMAND_ALTS = {
   bravo: 'congratulations',
   felicitations: 'congratulations',
   felicitation: 'congratulations',
+
+  curiouscat: 'question',
+  cc: 'question',
+  questions: 'question',
 };
 /** */
 
@@ -159,6 +164,11 @@ const makeLovemancer = (before, item) => {
   const mouth = randomPick(LOVEMANCER_MOUTHES);
   const face = `${eye} ${mouth} ${eye}`;
   return makeMancer(before, item, face);
+};
+
+const makeQuestionMancer = (before, question) => {
+  const text = makeMancer(before, QUESTIONS);
+  return `${text}\n\n${question}`;
 };
 /** */
 
@@ -282,10 +292,18 @@ const COMMANDS = {
     (from, to) => makeMancer(`${to} Be prepared! ${from} invoked the congratmancer for praising you!`, CONGRATS),
     (from, to) => makeMancer(`${to} Wow, ${from} tolds me you did something very impressive! I'm proud of you!`, CONGRATS),
   ],
+
+  question: [
+    (from, to, question) => makeQuestionMancer(`${to} Hey, someone wants to ask you something!`, question),
+    (from, to, question) => makeQuestionMancer(`${to} A curious cat would like to ask you a question!`, question),
+    (from, to, question) => makeQuestionMancer(`${to} Someone wants to know more about you!`, question),
+    (from, to, question) => makeQuestionMancer(`${to} Oh! It looks like someone would be interested by your answer to this question!`, question),
+    (from, to, question) => makeQuestionMancer(`${to} Be prepared! Someone invoked the curiouscatmancer on you!`, question),
+  ],
 };
 
 
-export const runCommand = (instance, command, fromAddr, toAddr) => {
+export const runCommand = (instance, command, fromAddr, toAddr, remainingText) => {
   console.log('Running', command, fromAddr, toAddr);
 
   const key = COMMAND_ALTS[command] || command;
@@ -310,7 +328,7 @@ export const runCommand = (instance, command, fromAddr, toAddr) => {
   }
 
   const func = randomPick(funcs);
-  const text = func(from, to);
+  const text = func(from, to, remainingText);
   if (text == null) {
     return;
   }

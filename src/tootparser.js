@@ -2,6 +2,7 @@ import HtmlParser from 'htmlparser';
 import Str from 'underscore.string';
 import Url from 'url';
 import Path from 'path';
+import HtmlEntities from 'he';
 
 const domNodeToText = (node, text = []) => {
   const { name, type, attribs = {}, children } = node;
@@ -57,7 +58,7 @@ const analyzeTootDom = (dom) => {
     return null;
   }
 
-  return texts.join(' ');
+  return HtmlEntities.decode(texts.join(' '));
 };
 
 export const parseToot = (toot, onResult) => {

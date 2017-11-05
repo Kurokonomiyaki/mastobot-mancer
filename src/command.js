@@ -304,7 +304,7 @@ const COMMANDS = {
 
 
 export const runCommand = (instance, command, fromAddr, toAddr, remainingText) => {
-  console.log('Running', command, fromAddr, toAddr);
+  console.log('Running', command, fromAddr, toAddr, remainingText);
 
   const key = COMMAND_ALTS[command] || command;
   const funcs = COMMANDS[key];

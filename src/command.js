@@ -25,6 +25,14 @@ const COMMAND_ALTS = {
   aniv: 'birthday',
   anniversaire: 'birthday',
 
+  chocolat: 'chocolate',
+  choco: 'chocolate',
+
+  chocolatchaud: 'cocoa',
+  chocochaud: 'cocoa',
+  hotchocolate: 'cocoa',
+  hotchoco: 'cocoa',
+
   mochi: 'dango',
 
   glace: 'icecream',
@@ -138,6 +146,27 @@ const COMMANDS = {
     (strings, from, to) => makeMancer(strings, `${to} A fresh baked cookie, offered by ${from}.`, '🍪'),
     (strings, from, to) => makeMancer(strings, `${to} Cookie! (offered by ${from})`, '🍪'),
     (strings, from, to) => makeMancer(strings, `${to} Be prepared! ${from} invoked the cookiemancer for you!`, '🍪'),
+  ],
+
+  chocolate: [
+    (strings, from, to) => makeMancer(strings, `${to} Hey, ${from} thinks you deserve a treat! Have some chocolate!`, '🍫'),
+    (strings, from, to) => makeMancer(strings, `${to} Hello, ${from} wants to offer you some chocolate!`, '🍫'),
+    (strings, from, to) => makeMancer(strings, `${to} Black, white or milk? Under the command of ${from}, I can cast all the chocolate you want!`, '🍫'),
+    (strings, from, to) => makeMancer(strings, `${to} Wow, it's chocolate! ${from} wants to share it with you.`, '🍫'),
+    (strings, from, to) => makeMancer(strings, `${to} Black like magic! This chocolate is a gift from ${from}.`, '🍫'),
+    (strings, from, to) => makeMancer(strings, `${to} Chocolate! (offered by ${from})`, '🍫'),
+    (strings, from, to) => makeMancer(strings, `${to} Be prepared! ${from} invoked the chocomancer for you!`, '🍫'),    
+    (strings, from, to) => makeHallumancer(strings, `${to} Chocolate contains theobromine and is good for you! ${from} thinks you may enjoy some.`, '🍫'),
+  ],
+
+  cocoa: [
+    (strings, from, to) => makeMancer(strings, `${to} Here is some hot chocolate! (offered by ${from})`, '☕🍫'),
+    (strings, from, to) => makeMancer(strings, `${to} It's cold out there? ${from} wants to share a cup of hot chocolate with you!`, '☕🍫'),
+    (strings, from, to) => makeMancer(strings, `${to} What about a delicious coffee, offered by ${from}?`, '☕🍫'),
+    (strings, from, to) => makeMancer(strings, `${to} Hello, ${from} wants to offer you this hot chocolate!`, '☕🍫'),
+    (strings, from, to) => makeMancer(strings, `${to} Strong, spicy, vegan or with marshmallows? Under the command of ${from}, I can cast all the hot chocolate you want!`, '☕🍫'),
+    (strings, from, to) => makeMancer(strings, `${to} Hey, ${from} thinks you deserve this flavored hot chocolate! Agreed!`, '☕🍫'),
+    (strings, from, to) => makeMancer(strings, `${to} Be prepared! ${from} invoked the cocoamancer for you!`, '☕🍫'),
   ],
 
   pizza: [

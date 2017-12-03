@@ -30,6 +30,14 @@ var COMMAND_ALTS = {
   aniv: 'birthday',
   anniversaire: 'birthday',
 
+  chocolat: 'chocolate',
+  choco: 'chocolate',
+
+  chocolatchaud: 'cocoa',
+  chocochaud: 'cocoa',
+  hotchocolate: 'cocoa',
+  hotchoco: 'cocoa',
+
   mochi: 'dango',
 
   glace: 'icecream',
@@ -179,6 +187,40 @@ var COMMANDS = {
     return makeMancer(strings, to + ' Cookie! (offered by ' + from + ')', '🍪');
   }, function (strings, from, to) {
     return makeMancer(strings, to + ' Be prepared! ' + from + ' invoked the cookiemancer for you!', '🍪');
+  }],
+
+  chocolate: [function (strings, from, to) {
+    return makeMancer(strings, to + ' Hey, ' + from + ' thinks you deserve a treat! Have some chocolate!', '🍫');
+  }, function (strings, from, to) {
+    return makeMancer(strings, to + ' Hello, ' + from + ' wants to offer you some chocolate!', '🍫');
+  }, function (strings, from, to) {
+    return makeMancer(strings, to + ' Black, white or milk? Under the command of ' + from + ', I can cast all the chocolate you want!', '🍫');
+  }, function (strings, from, to) {
+    return makeMancer(strings, to + ' Wow, it\'s chocolate! ' + from + ' wants to share it with you.', '🍫');
+  }, function (strings, from, to) {
+    return makeMancer(strings, to + ' Black like magic! This chocolate is a gift from ' + from + '.', '🍫');
+  }, function (strings, from, to) {
+    return makeMancer(strings, to + ' Chocolate! (offered by ' + from + ')', '🍫');
+  }, function (strings, from, to) {
+    return makeMancer(strings, to + ' Be prepared! ' + from + ' invoked the chocomancer for you!', '🍫');
+  }, function (strings, from, to) {
+    return makeHallumancer(strings, to + ' Chocolate contains theobromine and is good for you! ' + from + ' thinks you may enjoy some.', '🍫');
+  }],
+
+  cocoa: [function (strings, from, to) {
+    return makeMancer(strings, to + ' Here is some hot chocolate! (offered by ' + from + ')', '☕🍫');
+  }, function (strings, from, to) {
+    return makeMancer(strings, to + ' It\'s cold out there? ' + from + ' wants to share a cup of hot chocolate with you!', '☕🍫');
+  }, function (strings, from, to) {
+    return makeMancer(strings, to + ' What about a delicious coffee, offered by ' + from + '?', '☕🍫');
+  }, function (strings, from, to) {
+    return makeMancer(strings, to + ' Hello, ' + from + ' wants to offer you this hot chocolate!', '☕🍫');
+  }, function (strings, from, to) {
+    return makeMancer(strings, to + ' Strong, spicy, vegan or with marshmallows? Under the command of ' + from + ', I can cast all the hot chocolate you want!', '☕🍫');
+  }, function (strings, from, to) {
+    return makeMancer(strings, to + ' Hey, ' + from + ' thinks you deserve this flavored hot chocolate! Agreed!', '☕🍫');
+  }, function (strings, from, to) {
+    return makeMancer(strings, to + ' Be prepared! ' + from + ' invoked the cocoamancer for you!', '☕🍫');
   }],
 
   pizza: [function (strings, from, to) {

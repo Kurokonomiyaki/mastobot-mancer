@@ -1,0 +1,14 @@
+{
+  "instanceUrl": "<your instance API url, e.g., https://my.instance/api/v1>",
+  "accessToken": "<your access token>",
+  "tootOptions": {
+    "visibility": "public",
+    "sensitive": false
+  },
+  "customSparkles": [],
+  "customFaces": [],
+  "customHalluFaces": [],
+  "customLoveMouthes": [],
+  "customLoveEyes": [],
+  "customLoveCasts": []
+}

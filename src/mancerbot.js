@@ -1,33 +1,31 @@
 import Mastodon from 'mastodon-api';
 
+import { getSettings } from './settings';
 import { parseToot } from './tootparser';
 import { runCommand } from './command';
 
-import {
-  INSTANCE_URL,
-  ACCESS_TOKEN,
-} from './settings';
-
-const onMessageReceived = (instance, message) => {
+const onMessageReceived = (settings, instance, message) => {
   const { event, data } = message;
   if (event === 'notification' && data.type === 'mention') {
     const toot = data.status;
     const author = data.account;
 
     parseToot(toot.content, (words, remainingText) => {
-      runCommand(instance, words[1], author.acct, words[2], remainingText);
+      runCommand(instance, settings, words[1], author.acct, words[2], remainingText);
     });
   }
 };
 
 export const startBot = () => {
+  const settings = getSettings(`${__dirname}/../settings.json`);
+
   const instance = new Mastodon({
-    access_token: ACCESS_TOKEN,
-    api_url: `${INSTANCE_URL}/`,
+    access_token: settings.accessToken,
+    api_url: settings.instanceUrl,
   });
 
   const listener = instance.stream('streaming/user');
-  listener.on('message', (msg) => onMessageReceived(instance, msg));
+  listener.on('message', (msg) => onMessageReceived(settings, instance, msg));
   listener.on('error', (err) => console.log(err));
   // listener.on('heartbeat', msg => console.log('Dadoum.'));
 

@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 User=<specify user here>
-ExecStart=/usr/bin/node <path to your compiled mancerbot>
+ExecStart=/usr/bin/node <path to the index.js of the mancerbot, e.g., /<some path>/mastobot-mancer/compiled/index.js>
 TimeoutSec=15
 Restart=always
 

@@ -1,7 +1,7 @@
 {
   "name": "mastobot-mancer",
   "version": "0.0.1",
-  "description": "",
+  "description": "A bot that casts things for Mastodon",
   "main": "compiled/index.js",
   "scripts": {
     "compile": "node ./node_modules/babel-cli/bin/babel.js src --out-dir compiled",

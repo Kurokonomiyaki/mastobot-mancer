@@ -8,6 +8,7 @@ import {
   FLOWERS,
   QUESTIONS,
   CONGRATS,
+  PATPAT,
 } from './strings';
 
 /** ALTERNATIVES */
@@ -66,6 +67,8 @@ const COMMAND_ALTS = {
   curiouscat: 'question',
   cc: 'question',
   questions: 'question',
+
+  headpat: 'patpat',
 };
 /** */
 
@@ -243,6 +246,14 @@ const COMMANDS = {
     (strings, from, to) => makeMancer(strings, `${to} It looks like ${from} was very impressed by what you did!`, CONGRATS),
     (strings, from, to) => makeMancer(strings, `${to} Be prepared! ${from} invoked the congratmancer for praising you!`, CONGRATS),
     (strings, from, to) => makeMancer(strings, `${to} Wow, ${from} tolds me you did something very impressive! I'm proud of you!`, CONGRATS),
+  ],
+
+  patpat: [
+    (strings, from, to) => makeMancer(strings, `${to} Hey, ${from} wants to give you a headpat!`, PATPAT),
+    (strings, from, to) => makeMancer(strings, `${to} You know what? ${from} thinks you deserves a pat on the head! *patpat*`, PATPAT),
+    (strings, from, to) => makeMancer(strings, `${to} Hello, ${from} believes headpats are in order here!`, PATPAT),
+    (strings, from, to) => makeMancer(strings, `${to} Oh! ${from} would like to headpat you!`, PATPAT),
+    (strings, from, to) => makeMancer(strings, `${to} Be prepared! ${from} invoked the patpatmancer for patpat you!`, PATPAT),
   ],
 
   question: [

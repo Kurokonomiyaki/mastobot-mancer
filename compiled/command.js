@@ -70,7 +70,9 @@ var COMMAND_ALTS = {
 
   curiouscat: 'question',
   cc: 'question',
-  questions: 'question'
+  questions: 'question',
+
+  headpat: 'patpat'
 };
 /** */
 
@@ -341,6 +343,18 @@ var COMMANDS = {
     return makeMancer(strings, to + ' Be prepared! ' + from + ' invoked the congratmancer for praising you!', _strings.CONGRATS);
   }, function (strings, from, to) {
     return makeMancer(strings, to + ' Wow, ' + from + ' tolds me you did something very impressive! I\'m proud of you!', _strings.CONGRATS);
+  }],
+
+  patpat: [function (strings, from, to) {
+    return makeMancer(strings, to + ' Hey, ' + from + ' wants to give you a headpat!', _strings.PATPAT);
+  }, function (strings, from, to) {
+    return makeMancer(strings, to + ' You know what? ' + from + ' thinks you deserves a pat on the head! *patpat*', _strings.PATPAT);
+  }, function (strings, from, to) {
+    return makeMancer(strings, to + ' Hello, ' + from + ' believes headpats are in order here!', _strings.PATPAT);
+  }, function (strings, from, to) {
+    return makeMancer(strings, to + ' Oh! ' + from + ' would like to headpat you!', _strings.PATPAT);
+  }, function (strings, from, to) {
+    return makeMancer(strings, to + ' Be prepared! ' + from + ' invoked the patpatmancer for patpat you!', _strings.PATPAT);
   }],
 
   question: [function (strings, from, to, question) {

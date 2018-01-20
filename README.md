@@ -46,7 +46,7 @@ A noticeably useless bot that casts things on demand.
 
 Send a direct message to the bot, following this pattern: `@<yourbotname> <thing> <recipient>`.
 
-`<thing>` can be one of: coffee, tea, birthday, pizza, dango, icecream, love, breakfast, bunny, flower, congrats, chocolate, cocoa.
+`<thing>` can be one of: coffee, tea, birthday, pizza, dango, icecream, love, breakfast, bunny, flower, congrats, chocolate, cocoa, patpat.
 
 If you don't want the recipient to see your DM, don't write `@` before the recipient id. \
 Example: `@mancerbot coffee kuro@social.mochi.academy`

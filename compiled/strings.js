@@ -17,7 +17,7 @@ var DRINKS = exports.DRINKS = ['🍷', '🍸', '🍹', '🍺'];
 var ICE_CREAMS = exports.ICE_CREAMS = ['🍨', '🍧', '🍦'];
 var FLOWERS = exports.FLOWERS = ['🦂', '💐', '🌸', '🏵', '🌹', '🥀', '🌺', '🌻', '🌼', '🌷'];
 var CONGRATS = exports.CONGRATS = ['🎺', '🏆', '🏅', '👍', '👏'];
-var PATPAT = exports.PATPAT = ['😽', '👐', ':blobpats:', ':patcat:'];
+var PATPAT = exports.PATPAT = ['😽', '👐', ':blobpats:', ':patcat:', ':furry:'];
 var QUESTIONS = exports.QUESTIONS = ['❓', '❔', '???'];
 
 /** LOVEMANCER */

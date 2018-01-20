@@ -69,7 +69,7 @@ export const DRINKS = ['🍷', '🍸', '🍹', '🍺'];
 export const ICE_CREAMS = ['🍨', '🍧', '🍦'];
 export const FLOWERS = ['🦂', '💐', '🌸', '🏵', '🌹', '🥀', '🌺', '🌻', '🌼', '🌷'];
 export const CONGRATS = ['🎺', '🏆', '🏅', '👍', '👏'];
-export const PATPAT = ['😽', '👐', ':blobpats:', ':patcat:'];
+export const PATPAT = ['😽', '👐', ':blobpats:', ':patcat:', ':furry:'];
 export const QUESTIONS = ['❓', '❔', '???'];
 
 

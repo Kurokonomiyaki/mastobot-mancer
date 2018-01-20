@@ -250,9 +250,10 @@ const COMMANDS = {
 
   patpat: [
     (strings, from, to) => makeMancer(strings, `${to} Hey, ${from} wants to give you a headpat!`, PATPAT),
-    (strings, from, to) => makeMancer(strings, `${to} You know what? ${from} thinks you deserves a pat on the head! *patpat*`, PATPAT),
+    (strings, from, to) => makeMancer(strings, `${to} You know what? ${from} thinks you deserve a pat on the head! *patpat*`, PATPAT),
     (strings, from, to) => makeMancer(strings, `${to} Hello, ${from} believes headpats are in order here!`, PATPAT),
     (strings, from, to) => makeMancer(strings, `${to} Oh! ${from} would like to headpat you!`, PATPAT),
+    (strings, from, to) => makeMancer(strings, `${to} How nice! ${from} wants to patpat you! :3`, PATPAT),    
     (strings, from, to) => makeMancer(strings, `${to} Be prepared! ${from} invoked the patpatmancer for patpat you!`, PATPAT),
   ],
 

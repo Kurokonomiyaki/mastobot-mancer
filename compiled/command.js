@@ -348,11 +348,13 @@ var COMMANDS = {
   patpat: [function (strings, from, to) {
     return makeMancer(strings, to + ' Hey, ' + from + ' wants to give you a headpat!', _strings.PATPAT);
   }, function (strings, from, to) {
-    return makeMancer(strings, to + ' You know what? ' + from + ' thinks you deserves a pat on the head! *patpat*', _strings.PATPAT);
+    return makeMancer(strings, to + ' You know what? ' + from + ' thinks you deserve a pat on the head! *patpat*', _strings.PATPAT);
   }, function (strings, from, to) {
     return makeMancer(strings, to + ' Hello, ' + from + ' believes headpats are in order here!', _strings.PATPAT);
   }, function (strings, from, to) {
     return makeMancer(strings, to + ' Oh! ' + from + ' would like to headpat you!', _strings.PATPAT);
+  }, function (strings, from, to) {
+    return makeMancer(strings, to + ' How nice! ' + from + ' wants to patpat you! :3', _strings.PATPAT);
   }, function (strings, from, to) {
     return makeMancer(strings, to + ' Be prepared! ' + from + ' invoked the patpatmancer for patpat you!', _strings.PATPAT);
   }],
